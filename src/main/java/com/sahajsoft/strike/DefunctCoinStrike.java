@@ -1,8 +1,9 @@
-package com.sahajsoft.beans.strike;
+package com.sahajsoft.strike;
 
 import com.sahajsoft.beans.CarromBoard;
 import com.sahajsoft.beans.Player;
 import com.sahajsoft.constants.StrikePointConstant;
+import com.sahajsoft.exception.InvalidStrikeException;
 import com.sahajsoft.game.CleanStrikeGame;
 
 public class DefunctCoinStrike implements iStrike {
@@ -17,12 +18,14 @@ public class DefunctCoinStrike implements iStrike {
 		return board.hasBlackCoins();
 	}
 
-	public void doStrike(Player currentPlayer) {
+	public void doStrike(Player currentPlayer) throws InvalidStrikeException {
 		if(isStrikePossible()) {
 			board.reduceBlackCoins(1);
 			currentPlayer.decrementPointCount(StrikePointConstant.DEFUNCTCOINSTRIKEFOULPOINT.getPoint());
 			currentPlayer.updateFoulCount();
 			currentPlayer.updateSuccessiveNoPocketCount();
+		} else {
+			throw new InvalidStrikeException("Invalid  Strike");
 		}
 	}
 

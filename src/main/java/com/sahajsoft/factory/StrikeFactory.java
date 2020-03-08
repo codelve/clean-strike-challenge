@@ -2,13 +2,13 @@ package com.sahajsoft.factory;
 
 import java.util.HashMap;
 
-import com.sahajsoft.beans.strike.DefunctCoinStrike;
-import com.sahajsoft.beans.strike.MultiStrike;
-import com.sahajsoft.beans.strike.NoStrike;
-import com.sahajsoft.beans.strike.RedStrike;
-import com.sahajsoft.beans.strike.SingleStrike;
-import com.sahajsoft.beans.strike.StrikerStrike;
-import com.sahajsoft.beans.strike.iStrike;
+import com.sahajsoft.strike.DefunctCoinStrike;
+import com.sahajsoft.strike.MultiStrike;
+import com.sahajsoft.strike.NoStrike;
+import com.sahajsoft.strike.RedStrike;
+import com.sahajsoft.strike.SingleStrike;
+import com.sahajsoft.strike.StrikerStrike;
+import com.sahajsoft.strike.iStrike;
 
 public class StrikeFactory {
 	private static final HashMap<String, iStrike> m_RegisteredStrikes = new HashMap<String, iStrike>();

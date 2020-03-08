@@ -6,12 +6,12 @@ import java.util.Queue;
 
 import com.sahajsoft.beans.CarromBoard;
 import com.sahajsoft.beans.Player;
-import com.sahajsoft.beans.strike.iStrike;
 import com.sahajsoft.constants.GameStatus;
 import com.sahajsoft.exception.InvalidStrikeException;
 import com.sahajsoft.exception.PlayerLimitExceeded;
 import com.sahajsoft.exception.UnfairMovesException;
 import com.sahajsoft.factory.StrikeFactory;
+import com.sahajsoft.strike.iStrike;
 
 public class CleanStrikeGame {
 
@@ -34,7 +34,6 @@ public class CleanStrikeGame {
 		if (instance == null) {
 			synchronized (CleanStrikeGame.class) {
 				if (instance == null) {
-					System.out.println("CleanStrikeGame : First time getInstance was invoked!");
 					instance = new CleanStrikeGame();
 				}
 			}
@@ -57,8 +56,8 @@ public class CleanStrikeGame {
 				if (board.hasCoins()) {
 					String outcome = player.getStrikes().poll();
 					if (outcome == null) {
-						throw new UnfairMovesException(
-								player.getPlayerName() + " should have equal number of moves.");
+						gameStatus = GameStatus.Draw.toString();
+						return;
 					}
 
 					iStrike strike = StrikeFactory.createStrike(outcome);

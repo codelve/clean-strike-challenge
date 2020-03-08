@@ -1,4 +1,4 @@
-package com.sahajsoft.beans.strike;
+package com.sahajsoft.strike;
 
 import com.sahajsoft.beans.Player;
 

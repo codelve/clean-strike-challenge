@@ -1,4 +1,4 @@
-package com.sahajsoft.clean_strike_challenge;
+package com.sahajsoft;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,18 +27,6 @@ public class App {
 		announceResult();
 	}
 
-	private static void announceResult() {
-		game.announceResult();
-	}
-
-	private static void play() {
-		try {
-			game.play();
-		} catch (UnfairMovesException | InvalidStrikeException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
 	private static void registerPlayers() throws IOException {
 
 		Queue<String> player1Moves = fileReader("moves/PlayerOne.txt");
@@ -52,6 +40,19 @@ public class App {
 		}
 
 	}
+	
+	private static void play() {
+		try {
+			game.play();
+		} catch (UnfairMovesException | InvalidStrikeException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private static void announceResult() {
+		game.announceResult();
+	}
+
 
 	private static Queue<String> fileReader(String filePath) throws IOException {
 		Queue<String> moves = new LinkedList<String>();
