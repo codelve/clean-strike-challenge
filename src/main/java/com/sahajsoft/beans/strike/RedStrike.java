@@ -2,6 +2,7 @@ package com.sahajsoft.beans.strike;
 
 import com.sahajsoft.beans.CarromBoard;
 import com.sahajsoft.beans.Player;
+import com.sahajsoft.constants.StrikePointConstant;
 import com.sahajsoft.game.CleanStrikeGame;
 
 public class RedStrike implements iStrike {
@@ -20,7 +21,7 @@ public class RedStrike implements iStrike {
 		if(isStrikePossible()) {
 			board.reduceRedCoins(1);
 			currentPlayer.setSuccessiveNoPocketCount(0);
-			currentPlayer.incrementPointCount(3);
+			currentPlayer.incrementPointCount(StrikePointConstant.REDSTRIKEPOINT.getPoint());
 		}		
 	}
 

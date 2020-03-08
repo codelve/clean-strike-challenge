@@ -1,6 +1,7 @@
 package com.sahajsoft.beans.strike;
 
 import com.sahajsoft.beans.Player;
+import com.sahajsoft.constants.StrikePointConstant;
 
 public class StrikerStrike implements iStrike {
 
@@ -10,7 +11,7 @@ public class StrikerStrike implements iStrike {
 
 	public void doStrike(Player currentPlayer) {
 		if(isStrikePossible()) {
-			currentPlayer.decrementPointCount(1);	
+			currentPlayer.decrementPointCount(StrikePointConstant.STRIKERSTRIKEPOINT.getPoint());	
 			currentPlayer.updateFoulCount();
 			currentPlayer.updateSuccessiveNoPocketCount();
 		}		

@@ -2,6 +2,8 @@ package com.sahajsoft.beans;
 
 import java.util.Queue;
 
+import com.sahajsoft.constants.StrikePointConstant;
+
 public class Player {
 	
 	private String playerName;
@@ -81,14 +83,14 @@ public class Player {
 	
 	public void updateFoulCount() {
 		this.incrementFoulCount(1);
-		if(this.getFoulCount()>=2) {
+		if(this.getFoulCount()>=StrikePointConstant.MAXCONTINUOUSFOULCOUNT.getPoint()) {
 			this.decrementPointCount(1);
 		}
 	}
 	
 	public void updateSuccessiveNoPocketCount() {
 		this.incrementSuccessiveNoPocketCount(1);
-		if(this.getSuccessiveNoPocketCount()>=2) {
+		if(this.getSuccessiveNoPocketCount()>=StrikePointConstant.MAXSUCCESSIVENOSTRIKECOUNT.getPoint()) {
 			this.decrementPointCount(1);
 			this.updateFoulCount();
 		}

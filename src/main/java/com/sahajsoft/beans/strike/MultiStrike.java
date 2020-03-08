@@ -2,6 +2,7 @@ package com.sahajsoft.beans.strike;
 
 import com.sahajsoft.beans.CarromBoard;
 import com.sahajsoft.beans.Player;
+import com.sahajsoft.constants.StrikePointConstant;
 import com.sahajsoft.game.CleanStrikeGame;
 
 public class MultiStrike implements iStrike {
@@ -23,7 +24,7 @@ public class MultiStrike implements iStrike {
 		if(isStrikePossible()) {
 			board.reduceBlackCoins(2);
 			currentPlayer.setSuccessiveNoPocketCount(0);
-			currentPlayer.incrementPointCount(2);
+			currentPlayer.incrementPointCount(StrikePointConstant.MULTISTRIKEPOINT.getPoint());
 		}	
 
 	}
