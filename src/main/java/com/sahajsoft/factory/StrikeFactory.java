@@ -29,7 +29,13 @@ public class StrikeFactory {
 	public static void registerStrike(String strikeID, iStrike strikeClass) {
 		m_RegisteredStrikes.put(strikeID, strikeClass);
 	}
+	
 
+	/**
+	 * 
+	 * @param strikeName -- strike played by Player
+	 * @return Optional representation of iStrike
+	 */
 	public static Optional<iStrike> createStrike(String strikeName) {
 		return Optional.ofNullable(m_RegisteredStrikes.get(strikeName)).map(iStrike::createStrike);
 	}

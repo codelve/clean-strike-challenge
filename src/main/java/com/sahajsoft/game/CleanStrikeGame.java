@@ -20,7 +20,6 @@ public class CleanStrikeGame {
 	private static CleanStrikeGame instance;
 	private List<Player> playersList = new ArrayList<Player>();
 	private String gameStatus;
-	StrikeFactory factory;
 	private CarromBoard board;
 
 	public CarromBoard getBoard() {
@@ -43,6 +42,9 @@ public class CleanStrikeGame {
 		return instance;
 	}
 
+	/**
+	 * register players with moves to play the game
+	 */
 	public void registerPlayer(String name, Queue<String> moves) throws PlayerLimitExceeded {
 		if (playersList.size() == maxPlayerCount) {
 			throw new PlayerLimitExceeded("Players Limit Exceeded");
@@ -60,7 +62,7 @@ public class CleanStrikeGame {
 						gameStatus = GameStatus.Draw.toString();
 						return;
 					}
-
+					
 					Optional<iStrike> strike = StrikeFactory.createStrike(outcome);
 					if(strike.isPresent())
 						strike.get().doStrike(player);
