@@ -27,7 +27,7 @@ public class MultiStrike implements iStrike {
 			currentPlayer.setSuccessiveNoPocketCount(0);
 			currentPlayer.incrementPointCount(StrikePointConstant.MULTISTRIKEPOINT.getPoint());
 		} else {
-			throw new InvalidStrikeException();
+			throw new InvalidStrikeException("Invalid  Strike");
 		}
 
 	}

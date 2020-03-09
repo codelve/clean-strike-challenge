@@ -24,7 +24,7 @@ public class SingleStrike implements iStrike {
 			currentPlayer.setSuccessiveNoPocketCount(0);
 			currentPlayer.incrementPointCount(StrikePointConstant.SINGLESTRIKEPOINT.getPoint());
 		} else {
-			throw new InvalidStrikeException();
+			throw new InvalidStrikeException("");
 		}
 		
 	}

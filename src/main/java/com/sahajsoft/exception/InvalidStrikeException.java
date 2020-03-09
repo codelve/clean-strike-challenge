@@ -2,7 +2,8 @@ package com.sahajsoft.exception;
 
 @SuppressWarnings("serial")
 public class InvalidStrikeException extends Exception{
-	public InvalidStrikeException() {
-		super("Invalid Strike");
+	public InvalidStrikeException(String message) {
+		// TODO Auto-generated constructor stub
+		super(message);
 	}
 }
