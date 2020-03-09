@@ -84,6 +84,7 @@ public class Player {
 	public void updateFoulCount() {
 		this.incrementFoulCount(1);
 		if(this.getFoulCount()>=StrikePointConstant.MAXCONTINUOUSFOULCOUNT.getPoint()) {
+			this.setFoulCount(0);
 			this.decrementPointCount(1);
 		}
 	}
@@ -91,6 +92,7 @@ public class Player {
 	public void updateSuccessiveNoPocketCount() {
 		this.incrementSuccessiveNoPocketCount(1);
 		if(this.getSuccessiveNoPocketCount()>=StrikePointConstant.MAXSUCCESSIVENOSTRIKECOUNT.getPoint()) {
+			this.setSuccessiveNoPocketCount(0);
 			this.decrementPointCount(1);
 			this.updateFoulCount();
 		}

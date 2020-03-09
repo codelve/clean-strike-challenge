@@ -24,7 +24,7 @@ public class RedStrike implements iStrike {
 			currentPlayer.setSuccessiveNoPocketCount(0);
 			currentPlayer.incrementPointCount(StrikePointConstant.REDSTRIKEPOINT.getPoint());
 		} else {
-			throw new InvalidStrikeException("Invalid  Strike");
+			throw new InvalidStrikeException();
 		}	
 	}
 

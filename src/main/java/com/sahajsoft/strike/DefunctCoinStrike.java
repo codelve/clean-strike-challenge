@@ -25,7 +25,7 @@ public class DefunctCoinStrike implements iStrike {
 			currentPlayer.updateFoulCount();
 			currentPlayer.updateSuccessiveNoPocketCount();
 		} else {
-			throw new InvalidStrikeException("Invalid  Strike");
+			throw new InvalidStrikeException();
 		}
 	}
 
