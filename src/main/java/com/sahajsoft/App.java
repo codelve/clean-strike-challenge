@@ -8,23 +8,27 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.sahajsoft.exception.InvalidStrikeException;
 import com.sahajsoft.exception.PlayerLimitExceeded;
-import com.sahajsoft.exception.UnfairMovesException;
 import com.sahajsoft.game.CleanStrikeGame;
 
 /**
+ * Possible Strikes are: 
+ * 1. Strike 
+ * 2. Multistrike 
+ * 3. Red strike 
+ * 4. Striker strike 
+ * 5. Defunct coin 
+ * 6. None
  * 
  */
 public class App {
 
-	static CleanStrikeGame game;
+	static CleanStrikeGame game = CleanStrikeGame.instance();
 
 	public static void main(String[] args) throws IOException {
-		game = CleanStrikeGame.instance();
 		registerPlayers();
-		play();
-		announceResult();
+		game.start();
+		game.announceResult();
 	}
 
 	private static void registerPlayers() throws IOException {
@@ -40,27 +44,14 @@ public class App {
 		}
 
 	}
-	
-	private static void play() {
-		try {
-			game.play();
-		} catch (UnfairMovesException | InvalidStrikeException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	private static void announceResult() {
-		game.announceResult();
-	}
-
 
 	private static Queue<String> fileReader(String filePath) throws IOException {
 		Queue<String> moves = new LinkedList<String>();
 
 		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-		
+
 		try (FileInputStream inputStream = new FileInputStream(new File(classLoader.getResource(filePath).getFile()))) {
-			
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 			String line;
 			while ((line = reader.readLine()) != null) {

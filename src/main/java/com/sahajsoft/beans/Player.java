@@ -5,13 +5,13 @@ import java.util.Queue;
 import com.sahajsoft.constants.StrikePointConstant;
 
 public class Player {
-	
+
 	private String playerName;
 	private int pointCount;
 	private int foulCount;
 	private int successiveNoPocketCount;
 	private Queue<String> strikes;
-	
+
 	public Player(String playerName, Queue<String> strikes) {
 		this.playerName = playerName;
 		this.strikes = strikes;
@@ -20,7 +20,6 @@ public class Player {
 		successiveNoPocketCount = 0;
 	}
 
-	
 	public Queue<String> getStrikes() {
 		return strikes;
 	}
@@ -40,7 +39,7 @@ public class Player {
 	public void setPointCount(int pointCount) {
 		this.pointCount = pointCount;
 	}
-	
+
 	public void incrementPointCount(int pointCount) {
 		this.pointCount += pointCount;
 	}
@@ -56,7 +55,7 @@ public class Player {
 	public void setFoulCount(int foulCount) {
 		this.foulCount = foulCount;
 	}
-	
+
 	public void incrementFoulCount(int pointCount) {
 		this.foulCount += pointCount;
 	}
@@ -72,7 +71,7 @@ public class Player {
 	public void setSuccessiveNoPocketCount(int noPocketCount) {
 		this.successiveNoPocketCount = noPocketCount;
 	}
-	
+
 	public void incrementSuccessiveNoPocketCount(int pointCount) {
 		this.successiveNoPocketCount += pointCount;
 	}
@@ -80,20 +79,20 @@ public class Player {
 	public void decrementSuccessiveNoPocketCount(int pointCount) {
 		this.successiveNoPocketCount -= pointCount;
 	}
-	
+
 	public void updateFoulCount() {
 		this.incrementFoulCount(1);
-		if(this.getFoulCount()>=StrikePointConstant.MAXCONTINUOUSFOULCOUNT.getPoint()) {
+		if (this.getFoulCount() >= StrikePointConstant.MAXCONTINUOUSFOULCOUNT.getPoint()) {
 			this.decrementPointCount(1);
 		}
 	}
-	
+
 	public void updateSuccessiveNoPocketCount() {
 		this.incrementSuccessiveNoPocketCount(1);
-		if(this.getSuccessiveNoPocketCount()>=StrikePointConstant.MAXSUCCESSIVENOSTRIKECOUNT.getPoint()) {
+		if (this.getSuccessiveNoPocketCount() >= StrikePointConstant.MAXSUCCESSIVENOSTRIKECOUNT.getPoint()) {
 			this.decrementPointCount(1);
 			this.updateFoulCount();
 		}
 	}
-	
+
 }

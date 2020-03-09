@@ -7,9 +7,9 @@ import com.sahajsoft.exception.InvalidStrikeException;
 import com.sahajsoft.game.CleanStrikeGame;
 
 public class DefunctCoinStrike implements iStrike {
-	
+
 	static CarromBoard board;
-	
+
 	static {
 		board = CleanStrikeGame.instance().getBoard();
 	}
@@ -19,7 +19,7 @@ public class DefunctCoinStrike implements iStrike {
 	}
 
 	public void doStrike(Player currentPlayer) throws InvalidStrikeException {
-		if(isStrikePossible()) {
+		if (isStrikePossible()) {
 			board.reduceBlackCoins(1);
 			currentPlayer.decrementPointCount(StrikePointConstant.DEFUNCTCOINSTRIKEFOULPOINT.getPoint());
 			currentPlayer.updateFoulCount();

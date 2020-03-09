@@ -29,7 +29,6 @@ public class StrikeFactory {
 	public static void registerStrike(String strikeID, iStrike strikeClass) {
 		m_RegisteredStrikes.put(strikeID, strikeClass);
 	}
-	
 
 	/**
 	 * 

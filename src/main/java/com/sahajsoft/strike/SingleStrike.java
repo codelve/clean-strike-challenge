@@ -7,9 +7,9 @@ import com.sahajsoft.exception.InvalidStrikeException;
 import com.sahajsoft.game.CleanStrikeGame;
 
 public class SingleStrike implements iStrike {
-	
+
 	static CarromBoard board;
-	
+
 	static {
 		board = CleanStrikeGame.instance().getBoard();
 	}
@@ -19,14 +19,14 @@ public class SingleStrike implements iStrike {
 	}
 
 	public void doStrike(Player currentPlayer) throws InvalidStrikeException {
-		if(isStrikePossible()) {
+		if (isStrikePossible()) {
 			board.reduceBlackCoins(1);
 			currentPlayer.setSuccessiveNoPocketCount(0);
 			currentPlayer.incrementPointCount(StrikePointConstant.SINGLESTRIKEPOINT.getPoint());
 		} else {
 			throw new InvalidStrikeException(String.format("Invalid Strike By %s", currentPlayer.getPlayerName()));
 		}
-		
+
 	}
 
 	public iStrike createStrike() {

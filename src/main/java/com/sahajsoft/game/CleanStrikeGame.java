@@ -62,13 +62,13 @@ public class CleanStrikeGame {
 						gameStatus = GameStatus.Draw.toString();
 						return;
 					}
-					
+
 					Optional<iStrike> strike = StrikeFactory.createStrike(outcome);
-					if(strike.isPresent())
+					if (strike.isPresent())
 						strike.get().doStrike(player);
 					else
 						throw new InvalidStrikeException(String.format("Invalid Strike By %s", player.getPlayerName()));
-					
+
 					if (hasWinner()) {
 						gameStatus = GameStatus.Won.toString();
 						return;
@@ -97,6 +97,14 @@ public class CleanStrikeGame {
 					first.getPointCount() > second.getPointCount() ? first.getPlayerName() : second.getPlayerName()));
 			System.out.println(String.format("Final score is %s - %s", first.getPointCount(), second.getPointCount()));
 
+		}
+	}
+
+	public void start() {
+		try {
+			play();
+		} catch (UnfairMovesException | InvalidStrikeException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 

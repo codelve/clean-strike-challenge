@@ -11,8 +11,8 @@ public class StrikerStrike implements iStrike {
 	}
 
 	public void doStrike(Player currentPlayer) throws InvalidStrikeException {
-		if(isStrikePossible()) {
-			currentPlayer.decrementPointCount(StrikePointConstant.STRIKERSTRIKEPOINT.getPoint());	
+		if (isStrikePossible()) {
+			currentPlayer.decrementPointCount(StrikePointConstant.STRIKERSTRIKEPOINT.getPoint());
 			currentPlayer.updateFoulCount();
 			currentPlayer.updateSuccessiveNoPocketCount();
 		} else {

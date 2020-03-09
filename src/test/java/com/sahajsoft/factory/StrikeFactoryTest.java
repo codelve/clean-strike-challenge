@@ -11,27 +11,26 @@ import org.junit.Test;
 import com.sahajsoft.strike.iStrike;
 
 public class StrikeFactoryTest {
-	
+
 	@Test
 	public void givenNonNull_whenCreatesNonNullable_thenCorrect() {
-	    String strike = "Multistrike";
-	    Optional<iStrike> opt = StrikeFactory.createStrike(strike);
-	    assertTrue(opt.isPresent());
+		String strike = "Multistrike";
+		Optional<iStrike> opt = StrikeFactory.createStrike(strike);
+		assertTrue(opt.isPresent());
 	}
-	
+
 	@Test(expected = NoSuchElementException.class)
 	public void givenNull_whenThrowsErrorOnCreate_thenCorrect() {
 		String strike = null;
-	    Optional<iStrike> opt = StrikeFactory.createStrike(strike);
-	    opt.get();
+		Optional<iStrike> opt = StrikeFactory.createStrike(strike);
+		opt.get();
 	}
-	
+
 	@Test
 	public void givenNonNullWrong_whenCreatesEmpty_thenCorrect() {
-	    String strike = "Random Strike";
-	    Optional<iStrike> opt = StrikeFactory.createStrike(strike);
-	    assertFalse(opt.isPresent());
+		String strike = "Random Strike";
+		Optional<iStrike> opt = StrikeFactory.createStrike(strike);
+		assertFalse(opt.isPresent());
 	}
-	
 
 }
