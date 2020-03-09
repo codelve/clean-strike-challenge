@@ -1,6 +1,7 @@
 package com.sahajsoft.factory;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 import com.sahajsoft.strike.DefunctCoinStrike;
 import com.sahajsoft.strike.MultiStrike;
@@ -29,9 +30,8 @@ public class StrikeFactory {
 		m_RegisteredStrikes.put(strikeID, strikeClass);
 	}
 
-	public static iStrike createStrike(String strikeName) {
-		iStrike strike = m_RegisteredStrikes.get(strikeName);
-		return strike != null ? strike.createStrike() : null;
+	public static Optional<iStrike> createStrike(String strikeName) {
+		return Optional.ofNullable(m_RegisteredStrikes.get(strikeName)).map(iStrike::createStrike);
 	}
 
 }

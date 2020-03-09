@@ -2,6 +2,7 @@ package com.sahajsoft.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Queue;
 
 import com.sahajsoft.beans.CarromBoard;
@@ -60,10 +61,12 @@ public class CleanStrikeGame {
 						return;
 					}
 
-					iStrike strike = StrikeFactory.createStrike(outcome);
-					if (strike == null)
-						throw new InvalidStrikeException("Invalid  Strike");
-					strike.doStrike(player);
+					Optional<iStrike> strike = StrikeFactory.createStrike(outcome);
+					if(strike.isPresent())
+						strike.get().doStrike(player);
+					else
+						throw new InvalidStrikeException(String.format("Invalid Strike By %s", player.getPlayerName()));
+					
 					if (hasWinner()) {
 						gameStatus = GameStatus.Won.toString();
 						return;
